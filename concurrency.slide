@@ -7,23 +7,11 @@ github.com/charlesworth
 
 * Outline
 
-* Test Slide 1
+* Test Slide
 
 Here's a test for you, just main:
 
-.play content/test.go /func main/,
-
-* Test Slide 2
-
-Here's a test for you, just main:
-
-.play content/test.go /func setProc/,
-
-* Lets try an image
-
-.image content/test.jpg _
-
-Engage
+.play test.go
 
 * Quotes:
 
@@ -37,9 +25,23 @@ Quote this:
 
 Nice quote there
 
-* links and italics
+* Who is this guy?
+- Programming addict
+- C, Java, Ruby, Go
+- Director, JoshSoftware
+.link http://www.joshsoftware.com/team The JoshSoftware team
 
-_(See_also_golang.org/x/tools/go/loader)_
+* My Prediction
+- 1995 Java - at the time, people in India only knew the "Jawa" motorcycle!
+- 2005 Ruby - at the time, only Reevik Technologies (now defunct) had started work with Ruby in Pune.
+- 2015 Go - JoshSoftware is already into Go!
 
-.link https://github.com/jtolds/gls github.com/jtolds/gls
+.image ./test.jpg
 
+* The next decade belongs to Go
+
+In the 1970s, Fortran and Cobol where champions. In the 1980s, we had Pascal and C. In the 1990s, Basic and C++. In the 2000s, Java and C#. In the 2010s we have Ruby and  Python. Why would the years to come be any different?
+
+If history is anything to go by it seems inevitable that a new language will dominate the next decade. A new language will also need to solve problems that matter to this expanded world and that the existing languages will be slow to provide (or find impossible to provide).
+
+Could that new language be Go?
