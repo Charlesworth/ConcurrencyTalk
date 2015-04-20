@@ -13,6 +13,12 @@ Here's a test for you, just main:
 
 .play test.go
 
+* Test Slide 2
+
+Here's a test for you, just main:
+
+.play test.go /func main/,
+
 * Quotes:
 
 Quote this:
