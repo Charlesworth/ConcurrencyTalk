@@ -1,0 +1,45 @@
+Alternative Concurrency Models: From Hello World to Halo
+
+Charles Cochrane
+Liberty Team, Go and Java lover
+
+github.com/charlesworth
+
+* Outline
+
+* Test Slide 1
+
+Here's a test for you, just main:
+
+.play content/test.go /func main/,
+
+* Test Slide 2
+
+Here's a test for you, just main:
+
+.play content/test.go /func setProc/,
+
+* Lets try an image
+
+.image content/test.jpg _
+
+Engage
+
+* Quotes:
+
+Quote this:
+
+  We wouldn't even be having this discussion if thread local storage wasn't useful. But every 
+  feature comes at a cost, and in my opinion the cost of threadlocals far outweighs their benefits. 
+  They're just not a good fit for Go.
+
+  - Andrew Gerrand
+
+Nice quote there
+
+* links and italics
+
+_(See_also_golang.org/x/tools/go/loader)_
+
+.link https://github.com/jtolds/gls github.com/jtolds/gls
+
