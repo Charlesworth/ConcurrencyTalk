@@ -11,7 +11,7 @@ github.com/charlesworth
 
 Here's a test for you, just main:
 
-.play test.go /func main/,
+.play test.go /func setProc/,
 
 * Quotes:
 
