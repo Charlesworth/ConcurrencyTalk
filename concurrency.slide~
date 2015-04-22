@@ -143,12 +143,6 @@ When an Actor recieves a message it can
 	  }
 	}
 
-* Actor pros and cons
-
-http://www.slideshare.net/drorbr/the-actor-model-towards-better-concurrency
-
-* Actors in practice: Halo Backend
-
 * Code
 
 Here's a test for you, just main:
