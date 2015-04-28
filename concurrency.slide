@@ -18,41 +18,33 @@ Processors arn't getting much faster, there getting more cores.
 
 * So what is Concurrency and Parallelism
 
-Stolen example from the book Clojure for the Brave and True
+Lets start with a simple example: Watching TV while playing Angry Birds
 
 * Procedural
 
+	I can only focus on the TV or Angry Birds, so will pick one
 
-	I cannot text you with a drink in my hand, eh
-	- Lady Gaga
-
-
-The drink operation is blocking, so this is _Synchronus_ task.
+The watch TV operation is blocking me playing Angry Birds, so this is _Synchronus_ task.
 
 * Concurrent
 
-	I will put down this drink to text you, 
-	then put my phone away and continue drinking, eh
+	I will watch TV, but during the adverts I can play Angry Birds
 
-Lady Gaga is managing two seperate tasks so is _Asynchronus_.
+I am managing two seperate tasks here, so this is _Asynchronus_.
 
-However she is not executing both tasks at the same time, this is _Interleaving_.
+However I am not executing both tasks at the same time, this is _Interleaving_.
 
 * Parallel
 
+	I can watch TV while I'm playing Angry Birds
 
+This example is an _Asynchronus_ again, as the 2 tasks are not blocking each other.
 
-	I can text you with one hand
-	while I use the other to drink, eh
-
-This example is _Asynchronus_ again.
-
-This time she's executing more than one task at the same time, in _Parrallel_.
+This time I'm executing more than one task at the same time, in _Parrallel_.
 
 * Distributed
 
-	Beyoncé, please text this person,
-	while I have a drink, eh
+	I'll watch the TV while you finish this level on Angry Birds
 
 This example is _Asynchronus_ and _Parrallel_ on non-cohabitating processors!
 
