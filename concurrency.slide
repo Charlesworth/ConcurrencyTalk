@@ -103,8 +103,6 @@ _Real_Life_Analogy:_People_cooperating_by_sending_mail_to_one_other._
 
 * EXAMPLE: Akka, a popular Java Actor framework
 
-DEMO
-
 * Actors in practice: Halo Backend
 
 * Actor Benifits
@@ -139,11 +137,45 @@ Actor model with no mailbox buffer. Sender and Reciever are blocked until both a
 
 _Real_Life_Analogy:_People_phoning_each_other_
 
-
 * Example: Go Routines
 
-.play csp.go
+.play csp.go /^var/,/^func helloWorld/,/^}/
 
 * Example 2: Go Routines
 
 .play csp2.go /^func ping/,/^func pong/,/^}/
+
+* CSP in practice
+
+find an example!
+
+* There are many more interesting models!
+
+* Try it yourself: Languages and Libraries
+
+*Actors*
+
+.link http://akka.io/ Java Akka - The most popular Java actor Library 
+.link http://www.paralleluniverse.co/quasar/ Java Quasar - Library for both CSP and Actors
+.link http://www.scala-lang.org/ Scala - Actors are part of language
+.link https://github.com/dotnet/orleans Orleans - .NET framework used for Halo
+.link http://www.erlang.org/ Erlang - Actors are in the standard libraries
+
+*CSP*
+
+.link https://golang.org/ The Go Language - Built in concurrency with the CSP model (and my favorite)
+.link http://www.paralleluniverse.co/quasar/ Java Quasar Library - Library for both CSP and Actors
+.link https://github.com/clojure/core.async/ Clojure core.async - Library adding CSP functionality
+.link https://github.com/rssh/scala-gopher Scala-gopher Library - CSP implementation in Scala
+
+* Learn More: 
+
+.link https://www.youtube.com/watch?v=cN_DpYBzKso  Rob Pike - Concurrency Is Not Parallelism
+.link https://www.youtube.com/watch?v=f6kdp27TYZs Rob Pike - Go Concurrency Patterns 
+.link https://www.youtube.com/watch?v=dGVqrGmwOAw Rich Hickey - Clojure Concurrency
+.link http://www.amazon.co.uk/Seven-Concurrency-Models-Weeks-Programmers/dp/1937785653 Book - Seven Concurrency Models in Seven Weeks
+
+* Thanks for listening
+If you take anything away today: *I*will*try*out*some*concurrent*programming!*
+
+Find me after the talk if you have any questions :)
