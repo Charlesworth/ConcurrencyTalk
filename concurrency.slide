@@ -1,10 +1,11 @@
 Alternative Concurrency Models: From Hello World to Halo
 
 Charles Cochrane
-Liberty Cloud Team
+
+Liberty Steam Kitchen Team
 Go, Java and Ruby lover
 
-github.com/charlesworth
+github.com/Charlesworth
 
 * Why bother with Concurrency?
 		
@@ -14,7 +15,7 @@ github.com/charlesworth
 
 	- Herb Sutter
 
-Processors arn't getting much faster, there getting more cores.
+Processors arn't getting much faster, they're getting more cores.
 
 * So what is Concurrency and Parallelism
 
@@ -22,7 +23,7 @@ Lets start with a simple example: Watching TV while playing Angry Birds
 
 * Procedural
 
-	I can only focus on the TV or Angry Birds, so will pick one
+	I have to watch some TV before I can play Angry Birds
 
 The watch TV operation is blocking me playing Angry Birds, so this is _Synchronus_ task.
 
@@ -30,9 +31,9 @@ The watch TV operation is blocking me playing Angry Birds, so this is _Synchronu
 
 	I will watch TV, but during the adverts I can play Angry Birds
 
-I am managing two seperate tasks here, so this is _Asynchronus_.
+I am managing two seperate tasks here that are independant, so this is _Asynchronus_.
 
-However I am not executing both tasks at the same time, this is _Interleaving_.
+However I am not executing both tasks at the same time, I am _Interleaving_ between them.
 
 * Parallel
 
@@ -50,31 +51,20 @@ This example is _Asynchronus_ and _Parrallel_ on non-cohabitating processors!
 
 * The right tool for the right job
 
-Great for blocking operations where asynchronicity is key
+There is no universal "best" way to do concurrency or parrallelism,
+so lets look at some popular models and when they fit.
 
-Great for massive problems where splitting into sub-tasks could simplify
+* The ol ' fasioned way: Threading
 
-* Threading....
+.image ./threading.jpg
 
-* A single core with a single thread
+* Common and most popular method
 
-.image ./proc1.jpg
-
-* A single core with multiple threads.....
-
-.image ./proc3.jpg
-
-* ...is actualy Interleaving
-
-.image ./proc2.jpg
-
-The work is _nondeterministic_; You don't know execution order. 
+All of the most popular langauges offer threads and locks for concurrent programming as standard.
 
 * Threading on multiple cores
 
-.image ./proc4.jpg
-
-Its very unlikely that this will ever be the case! 
+.image ./threads.png _ 700
 
 * Problems with threading
 
@@ -84,6 +74,7 @@ There is lots to think about and many potential problems:
 - Deadlocks
 - Priority Inversion
 - Heavily Contended Locks
+- Hard to safely modify the application
 - ...
 
 _Lets_look_at_some_different_models_
@@ -96,12 +87,15 @@ _Lets_look_at_some_different_models_
 
 Instead of Objects, you have Actors.
 
-Actors can only communicate through messages and each has its own mail box.
+Actors can only communicate through messages and each has its own buffered mailbox.
 
 When an Actor recieves a message it can
 - perform a function
 - create more actors 
 - send more messages
+
+
+_Real_Life_Analogy:_People_cooperating_by_sending_mail_to_one_other._
 
 * The Actor Model
 
@@ -109,73 +103,47 @@ When an Actor recieves a message it can
 
 * EXAMPLE: Akka, a popular Java Actor framework
 
-	package sample.hello;
-
-	import akka.actor.Props;
-	import akka.actor.UntypedActor;
-	import akka.actor.ActorRef;
-
-	public class HelloWorld extends UntypedActor {
-
-	  @Override
-	  public void preStart() {
-	    // create the greeter actor
-	    final ActorRef greeter = getContext().actorOf(Props.create(Greeter.class), "greeter");
-	    // tell it to perform the greeting
-	    greeter.tell(Greeter.Msg.GREET, getSelf());
-	  }
-
-	  @Override
-	  public void onReceive(Object msg) {
-	    if (msg == Greeter.Msg.DONE) {
-	      // when the greeter is done, stop this actor and with it the application
-	      getContext().stop(getSelf());
-	    } else
-	      unhandled(msg);
-	  }
-	}
-
-* Actor pros and cons
-
-http://www.slideshare.net/drorbr/the-actor-model-towards-better-concurrency
+DEMO
 
 * Actors in practice: Halo Backend
 
-* Code
+* Actor Benifits
 
-Here's a test for you, just main:
+High level of abstraction
 
-.play test.go /func setProc/,
+No shared state means easy to avoid:
+- Race conditions
+- Deadlocks
+- Heavily Contended Locks
 
-* Quotes:
+Easy to distribute
 
-Quote this:
+* But its not all roses
 
-  We wouldn't even be having this discussion if thread local storage wasn't useful. But every 
-  feature comes at a cost, and in my opinion the cost of threadlocals far outweighs their benefits. 
-  They're just not a good fit for Go.
+- Shared state is often required
+- Synchronous behavior is often required
+- Buffered mailboxes can be memory expensive
 
-  - Andrew Gerrand
+_Lets_try_another_model_
 
-Nice quote there
+* CSP (Communicating Sequential Processes)
 
-* Who is this guy?
-- Programming addict
-- C, Java, Ruby, Go
-- Director, JoshSoftware
-.link http://www.joshsoftware.com/team The JoshSoftware team
+.image ./phone.jpg _ 600
 
-* My Prediction
-- 1995 Java - at the time, people in India only knew the "Jawa" motorcycle!
-- 2005 Ruby - at the time, only Reevik Technologies (now defunct) had started work with Ruby in Pune.
-- 2015 Go - JoshSoftware is already into Go!
+* CSP (Communicating Sequential Processes)
 
-.image ./test.jpg
+Actor model with no mailbox buffer. Sender and Reciever are blocked until both are ready. 
 
-* The next decade belongs to Go
+- Still uses messaging to share state, through a _Channel_
+- Message passing naturaly synchronises threads
 
-In the 1970s, Fortran and Cobol where champions. In the 1980s, we had Pascal and C. In the 1990s, Basic and C++. In the 2000s, Java and C#. In the 2010s we have Ruby and  Python. Why would the years to come be any different?
+_Real_Life_Analogy:_People_phoning_each_other_
 
-If history is anything to go by it seems inevitable that a new language will dominate the next decade. A new language will also need to solve problems that matter to this expanded world and that the existing languages will be slow to provide (or find impossible to provide).
 
-Could that new language be Go?
+* Example: Go Routines
+
+.play csp.go
+
+* Example 2: Go Routines
+
+.play csp2.go /^func ping/,/^func pong/,/^}/
