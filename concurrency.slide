@@ -8,7 +8,7 @@ Go, Java and Ruby lover
 github.com/Charlesworth
 
 * Why bother with Concurrency?
-		
+
 	The Free Lunch Is Over,
 	the biggest sea change in software development since the OO revolution
 	is knocking at the door, and its name is Concurrency.
@@ -91,7 +91,7 @@ Actors can only communicate through messages and each has its own buffered mailb
 
 When an Actor recieves a message it can
 - perform a function
-- create more actors 
+- create more actors
 - send more messages
 
 
@@ -101,9 +101,30 @@ _Real_Life_Analogy:_People_cooperating_by_sending_mail_to_one_other._
 
 .image ./ActorModel.png
 
-* EXAMPLE: Akka, a popular Java Actor framework
+* Actors in practice: Halo 4 Backend
 
-* Actors in practice: Halo Backend
+Halo 4 and upcoming Halo 5 uses the Actor model for game and player stats.
+
+It uses the opensource Oreals framework
+.link https://github.com/dotnet/Orleans
+
+_For_some_reason_they_call_Actors_Grains?_
+
+* Halo 4 Backend
+
+.image ./Halo1.png _ 600
+
+* Halo 4 Backend
+
+.image ./Halo2.png _ 600
+
+* Halo 4 Backend
+
+.image ./Halo3.png _ 600
+
+* Halo 4 Backend
+
+.image ./Halo4.png _ 600
 
 * Actor Benifits
 
@@ -130,12 +151,12 @@ _Lets_try_another_model_
 
 * CSP (Communicating Sequential Processes)
 
-Actor model with no mailbox buffer. Sender and Reciever are blocked until both are ready. 
+Actor model with no mailbox buffer. Sender and Reciever are blocked until both are ready.
 
 - Still uses messaging to share state, through a _Channel_
 - Message passing naturaly synchronises threads
 
-_Real_Life_Analogy:_People_phoning_each_other_
+_Real_Life_Analogy:_People_phoning_each_other_(with_no_answer_machine)_
 
 * Example: Go Routines
 
@@ -147,7 +168,9 @@ _Real_Life_Analogy:_People_phoning_each_other_
 
 * CSP in practice
 
-find an example!
+dl.google.com serves Google downloads and is written completly in Go.
+
+.link https://talks.golang.org/2013/oscon-dl.slide
 
 * There are many more interesting models!
 
@@ -155,7 +178,7 @@ find an example!
 
 *Actors*
 
-.link http://akka.io/ Java Akka - The most popular Java actor Library 
+.link http://akka.io/ Java Akka - The most popular Java actor Library
 .link http://www.paralleluniverse.co/quasar/ Java Quasar - Library for both CSP and Actors
 .link http://www.scala-lang.org/ Scala - Actors are part of language
 .link https://github.com/dotnet/orleans Orleans - .NET framework used for Halo
@@ -168,10 +191,10 @@ find an example!
 .link https://github.com/clojure/core.async/ Clojure core.async - Library adding CSP functionality
 .link https://github.com/rssh/scala-gopher Scala-gopher Library - CSP implementation in Scala
 
-* Learn More: 
+* Learn More:
 
 .link https://www.youtube.com/watch?v=cN_DpYBzKso  Rob Pike - Concurrency Is Not Parallelism
-.link https://www.youtube.com/watch?v=f6kdp27TYZs Rob Pike - Go Concurrency Patterns 
+.link https://www.youtube.com/watch?v=f6kdp27TYZs Rob Pike - Go Concurrency Patterns
 .link https://www.youtube.com/watch?v=dGVqrGmwOAw Rich Hickey - Clojure Concurrency
 .link http://www.amazon.co.uk/Seven-Concurrency-Models-Weeks-Programmers/dp/1937785653 Book - Seven Concurrency Models in Seven Weeks
 

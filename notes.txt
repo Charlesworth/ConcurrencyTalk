@@ -1,0 +1,30 @@
+#the actor model
+
+The actor model is based on a collection of small objects that are referred to as “actors”. Everything – state and behavior – is modeled as an actor in this model. Actor is the sole primitive. The implementer defines a set of actors that makes sense for a given problem domain, and the allowable set of actions that they can have. This approach is very similar to object oriented-design principles, with a bias towards more finely defined objects. The execution mechanics is where the actor model starts differ in more obvious ways.
+
+Much like object-oriented design, actors represent and mutate state. An entire service built with the actor model might conceptually own a database or a collection of tables within it, while an actor might represent a single row. State is typically updated based on interactions with other actors.
+
+Actors communicate via asynchronous messages that are delivered via system-generated proxies. The actors themselves do not hold a direct reference to one another. This isolation and asynchronous communication simplifies scale-out and elasticity of applications as well as recovery from failures.
+
+Actors are always single-threaded, in terms of execution mechanics. That means that the state held by an actor is always consistent. There is no reason to consider data contention or locking schemes, since an actor is the sole owner of its data, and only ever runs on one thread. This characteristic simplifies writing highly concurrent systems by removing data races within and between actors.
+
+#Halo 4
+
+uses a virtual actors,
+11.6 million player grains
+
+1.5 billion game grains
+
+make game grain, at end of game it agregates the stats, stores the game history in blob storage, sends message to all the players.
+
+each player gets just the stats it needs to process the game
+then updates the aggregate statistics to table storage.
+
+the player grains then message back to the game grain, who can then go away and kill itself (out of mem)
+
+#graph
+get data, deserialize and then 2+ grain calls
+near linear scalability
+
+#gracefull failures
+As grains often reply after a computation, in the case of ungraceful failures and the grain vanishes, no reply is recieved, so the grain is rehydrated on another machine and the process can be re-run.
