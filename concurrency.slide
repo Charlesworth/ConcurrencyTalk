@@ -106,13 +106,13 @@ _Real_Life_Analogy:_People_cooperating_by_sending_mail_to_one_other._
 Halo 4 and upcoming Halo 5 uses the Actor model for game and player stats.
 
 It uses the opensource Oreals framework
-.link https://github.com/dotnet/Orleans
+.link https://github.com/dotnet/Orleans github.com/dotnet/Orleans
 
-_For_some_reason_they_call_Actors_Grains?_
+_For_some_reason_they_call_Actors_Grains_and_machines_silos_
 
 * Halo 4 Backend
 
-.image ./Halo1.png _ 600
+.image ./Halo1.png _ 800
 
 * Halo 4 Backend
 
@@ -136,6 +136,8 @@ No shared state means easy to avoid:
 - Heavily Contended Locks
 
 Easy to distribute
+
+_Usualy_ single-threaded, so easier to program
 
 * But its not all roses
 
