@@ -105,7 +105,7 @@ _Real_Life_Analogy:_People_cooperating_by_sending_mail_to_one_other._
 
 Halo 4 and upcoming Halo 5 uses the Actor model for game and player stats.
 
-It uses the opensource Oreals framework
+It uses the opensource Orleans framework
 .link https://github.com/dotnet/Orleans github.com/dotnet/Orleans
 
 _For_some_reason_they_call_Actors_Grains_and_machines_silos_
